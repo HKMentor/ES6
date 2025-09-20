@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Cheatsheet</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #709cd6, #c7d6fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            max-width: 100%;
+            /* mobile ke liye */
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #0b33a3;
+            font-size: 26px;
+        }
+
+        h3 {
+            color: #111213;
+            font-size: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: none;
+            border-radius: 6px;
+            background: #1d4ed8;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .box {
+            display: none;
+            text-align: left;
+        }
+
+        pre {
+            background: #f9fafb;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+
+        .output {
+            background: #e5e7eb;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .question {
+            margin-top: 10px;
+            padding: 8px;
+            background: #fef9c3;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .back {
+            background: #2a2c2f;
+            margin-top: 12px;
+        }
+
+        /* Social Icons */
+        .social {
+            margin-top: 20px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .social a {
+            margin: 0 10px;
+            font-size: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, opacity 0.3s;
+            display: inline-block;
+        }
+
+        .social a:hover {
+            transform: translateY(-5px) scale(1.1);
+            opacity: 0.9;
+        }
+
+        .fa-linkedin {
+            color: #0077B5;
+        }
+
+        .fa-github {
+            color: #3c3c3c;
+        }
+
+        .fa-instagram {
+            color: #E4405F;
+        }
+
+        .fa-tiktok {
+            color: #151515;
+        }
+
+        /*  Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 18px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            pre,
+            .output,
+            .question {
+                font-size: 13px;
+                padding: 6px;
+            }
+
+            .social a {
+                font-size: 26px;
+                margin: 0 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>ES6 Features</h2>
+        <div id="menu">
+            <button onclick="showBox('intro')">Introduction</button>
+            <button onclick="showBox('letconst')">let & const</button>
+            <button onclick="showBox('arrow')">Arrow Function</button>
+            <button onclick="showBox('template')">Template literal</button>
+            <button onclick="showBox('default')">Default Parameters</button>
+            <button onclick="showBox('destruct')">Destructuring</button>
+            <button onclick="showBox('spread')">Spread & Rest </button>
+            <button onclick="showBox('class')">Classes</button>
+        </div>
+
+        <!-- INTRO -->
+        <div class="box" id="intro">
+            <h3>Introduction</h3>
+            <p><b>ES6 (ECMAScript 2015)</b> JavaScript ka eik updated version hai jisne purany JavaScript (ES5) k muqaby
+                me new features add kiye gye hain. <br> Iska main aim coding ko <b>easy, powerful aur readable</b>
+                banana hai!</p>
+            <ul>
+                <li>let & const → better variables</li>
+                <li>Arrow Functions → short syntax</li>
+                <li>Template Literals → easy strings</li>
+                <li>Default Params → fallback values</li>
+                <li>Destructuring → easy value extraction</li>
+                <li>Spread/Rest → flexible arrays</li>
+                <li>Classes → OOP made simple</li>
+                <li>Modules → reusability</li>
+            </ul> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!--LET CONST -->
+        <div class="box" id="letconst">
+            <h3>let & const</h3>
+            <pre> let name = "HOoria" const pi = 3.14 </pre>
+            <div class="question">❓ Agar const variable ko dobara change karenge to kya hoga?</div> <button
+                onclick="runLetConst()">▶ Run</button>
+            <div class="output" id="out-letconst"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- ARROW -->
+        <div class="box" id="arrow">
+            <h3>Arrow Function</h3>
+            <pre> const add = (a, b) => a + b </pre>
+            <div class="question">❓ Arrow functionka benefit kya hai? normal function k muqaby me.</div> <button
+                onclick="runArrow()">▶ Run</button>
+            <div class="output" id="out-arrow"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- TEMPLATE -->
+        <div id="template" class="box">
+            <h3>Template Literals</h3>
+            <pre> let name = "Hooria"; Hello, ${name}! How are you. Welcome to ES6 </pre>
+            <div class="question">❓ Agar hum ${name} ki jagah simple quotes lagayen to kya farq padega?</div> <button
+                onclick="runTemplate()">▶ Run</button>
+            <div id="out-template" class="output"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- DEFAULT -->
+        <div id="default" class="box">
+            <h3>Default Parameters</h3>
+            <pre> function greet(name = "Guest") { return Hello ${name}; } </pre>
+            <div class="question">❓ Agar hum greet() ko bina value ke call karein to kya hoga?</div> <button
+                onclick="runDefault()">▶ Run</button>
+            <div id="out-default" class="output"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- DESTRUCT -->
+        <div id="destruct" class="box">
+            <h3>Destructuring</h3>
+            <pre> let [a,b] = [10,20]; let {city, age} = {city:"Karachi", age:21}; </pre>
+            <div class="question">❓ Destructuring ka fayda kya hai?</div> <button onclick="runDestruct()">▶ Run</button>
+            <div id="out-destruct" class="output"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- SPREAD REST -->
+        <div id="spread" class="box">
+            <h3>Spread & Rest</h3>
+            <pre> let arr1 = [1,2,3]; let arr2 = [...arr1,4,5]; function sum(...nums){ return nums.reduce((a,b)=>a+b); } </pre>
+            <div class="question">❓ Spread operator ka use kaha hota hai?</div> <button onclick="runSpread()">▶
+                Run</button>
+            <div id="out-spread" class="output"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- CLASS -->
+        <div id="class" class="box">
+            <h3>Class</h3>
+            <pre> class Person { constructor(name,age){ this.name=name; this.age=age; } greet(){ return Hi, I am ${this.name}; } } </pre>
+            <div class="question">❓ Class ka use kyu hota hai?</div> <button onclick="runClass()">▶ Run</button>
+            <div id="out-class" class="output"></div> <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+
+        <!-- Social Media Section -->
+        <div class="social">
+            <a href="https://www.linkedin.com/in/YourProfile" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/YourUsername" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://instagram.com/YourProfile" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@YourProfile" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
