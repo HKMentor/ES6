@@ -1,293 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>ES6 Cheatsheet</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #709cd6, #c7d6fe);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 15px;
-    }
+    <meta charset="UTF-8">
+    <title>ES6 Cheatsheet</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #709cd6, #c7d6fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
 
-    .container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-      width: 420px;
-      max-width: 100%;
-      text-align: center;
-      animation: fadeIn 1s ease;
-    }
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            max-width: 100%;
+            text-align: center;
+        }
 
-    h2 {
-      margin-bottom: 15px;
-      color: #0b33a3;
-      font-size: 26px;
-    }
+        h2 {
+            margin-bottom: 15px;
+            color: #0b33a3;
+            font-size: 26px;
+        }
 
-    h3 {
-      color: #111213;
-      font-size: 20px;
-    }
+        h3 {
+            color: #111213;
+            font-size: 20px;
+        }
 
-    button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border: none;
-      border-radius: 6px;
-      background: #1d4ed8;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    button:hover { background: #2563eb; }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: none;
+            border-radius: 6px;
+            background: #1d4ed8;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
 
-    .box { display: none; text-align: left; }
+        button:hover {
+            background: #2563eb;
+        }
 
-    pre {
-      background: #f9fafb;
-      padding: 10px;
-      border-radius: 6px;
-      overflow-x: auto;
-      font-size: 14px;
-    }
+        .box {
+            display: none;
+            text-align: left;
+        }
 
-    .output {
-      background: #e0f7e9;
-      border-left: 4px solid #16a34a;
-      padding: 8px;
-      border-radius: 6px;
-      margin-top: 6px;
-      font-family: monospace;
-      white-space: pre-wrap;
-      color: #065f46;
-    }
+        pre {
+            background: #f9fafb;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
 
-    .question {
-      margin-top: 10px;
-      padding: 8px;
-      background: #fef9c3;
-      border-left: 4px solid #eab308;
-      border-radius: 6px;
-      font-size: 14px;
-    }
+        .output {
+            background: #e5e7eb;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
 
-    .back { background: #2a2c2f; margin-top: 12px; }
+        .question {
+            margin-top: 10px;
+            padding: 8px;
+            background: #fef9c3;
+            border-radius: 6px;
+            font-size: 14px;
+        }
 
-    /* Social Icons */
-    .social {
-      margin-top: 20px;
-    }
-    .social a {
-      margin: 0 10px;
-      font-size: 30px;
-      text-decoration: none;
-      transition: transform 0.3s, opacity 0.3s;
-      display: inline-block;
-    }
-    .social a:hover {
-      transform: translateY(-5px) scale(1.1);
-      opacity: 0.9;
-    }
-    .fa-linkedin { color: #0077B5; }
-    .fa-github { color: #3c3c3c; }
-    .fa-instagram { color: #E4405F; }
-    .fa-tiktok { color: #151515; }
+        .back {
+            background: #2a2c2f;
+            margin-top: 12px;
+        }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* Social Icons */
+        .social {
+            margin-top: 20px;
+            animation: fadeIn 1.2s ease;
+        }
 
-    /* Extra Small Screens */
-    @media (max-width: 400px) {
-      h2 { font-size: 18px; }
-      button { font-size: 13px; padding: 7px; }
-      .social a { font-size: 22px; margin: 0 5px; }
-    }
+        .social a {
+            margin: 0 10px;
+            font-size: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, opacity 0.3s;
+            display: inline-block;
+        }
 
-    /* Mobile Responsive */
-    @media (max-width: 600px) {
-      .container { width: 100%; padding: 18px; }
-      h2 { font-size: 20px; }
-      h3 { font-size: 16px; }
-      button { font-size: 14px; padding: 8px; }
-      pre, .output, .question { font-size: 13px; padding: 6px; }
-      .social a { font-size: 26px; margin: 0 6px; }
-    }
-  </style>
+        .social a:hover {
+            transform: translateY(-5px) scale(1.1);
+            opacity: 0.9;
+        }
+
+        .fa-linkedin {
+            color: #0077B5;
+        }
+
+        .fa-github {
+            color: #3c3c3c;
+        }
+
+        .fa-instagram {
+            color: #E4405F;
+        }
+
+        .fa-tiktok {
+            color: #151515;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Extra Responsive Improvement */
+        @media (max-width: 400px) {
+            h2 {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 13px;
+                padding: 7px;
+            }
+
+            .social a {
+                font-size: 22px;
+                margin: 0 5px;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 18px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            pre,
+            .output,
+            .question {
+                font-size: 13px;
+                padding: 6px;
+            }
+
+            .social a {
+                font-size: 26px;
+                margin: 0 6px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <h2>ES6 Features</h2>
-    <div id="menu">
-      <button onclick="showBox('intro')">Introduction</button>
-      <button onclick="showBox('letconst')">let & const</button>
-      <button onclick="showBox('arrow')">Arrow Function</button>
-      <button onclick="showBox('template')">Template literal</button>
-      <button onclick="showBox('default')">Default Parameters</button>
-      <button onclick="showBox('destruct')">Destructuring</button>
-      <button onclick="showBox('spread')">Spread & Rest</button>
-      <button onclick="showBox('class')">Classes</button>
+    <div class="container">
+        <h2>ES6 Features</h2>
+        <div id="menu">
+            <button onclick="showBox('intro')">Introduction</button>
+            <button onclick="showBox('letconst')">let & const</button>
+            <button onclick="showBox('arrow')">Arrow Function</button>
+            <button onclick="showBox('template')">Template literal</button>
+            <button onclick="showBox('default')">Default Parameters</button>
+            <button onclick="showBox('destruct')">Destructuring</button>
+            <button onclick="showBox('spread')">Spread & Rest </button>
+            <button onclick="showBox('class')">Classes</button>
+        </div>
+
+        <!-- INTRO -->
+        <div class="box" id="intro">
+            <h3>Introduction</h3>
+            <p><b>ES6 (ECMAScript 2015)</b> JavaScript ka eik updated version hai jisne purany JavaScript (ES5) k muqaby me new features add kiye.
+                <br> Iska aim coding ko <b>easy, powerful aur readable</b> banana hai!</p>
+            <ul>
+                <li>let & const → better variables</li>
+                <li>Arrow Functions → short syntax</li>
+                <li>Template Literals → easy strings</li>
+                <li>Default Params → fallback values</li>
+                <li>Destructuring → easy value extraction</li>
+                <li>Spread/Rest → flexible arrays</li>
+                <li>Classes → OOP made simple</li>
+                <li>Modules → reusability</li>
+            </ul>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- LET CONST -->
+        <div class="box" id="letconst">
+            <h3>let & const</h3>
+<pre><code>let name = "Hooria"; 
+const pi = 3.14;</code></pre>
+            <div class="question">❓ Agar const variable ko dobara change karenge to kya hoga?</div>
+            <button onclick="runLetConst()">▶ Run</button>
+            <div class="output" id="out-letconst"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- ARROW -->
+        <div class="box" id="arrow">
+            <h3>Arrow Function</h3>
+<pre><code>const add = (a, b) => a + b;</code></pre>
+            <div class="question">❓ Arrow function ka benefit kya hai?</div>
+            <button onclick="runArrow()">▶ Run</button>
+            <div class="output" id="out-arrow"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- TEMPLATE -->
+        <div id="template" class="box">
+            <h3>Template Literals</h3>
+<pre><code>let name = "Hooria"; 
+console.log(`Hello, ${name}!`);</code></pre>
+            <div class="question">❓ Agar hum ${name} ki jagah simple quotes lagayen to kya hoga?</div>
+            <button onclick="runTemplate()">▶ Run</button>
+            <div id="out-template" class="output"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- DEFAULT -->
+        <div id="default" class="box">
+            <h3>Default Parameters</h3>
+<pre><code>function greet(name = "Guest") {
+  return `Hello ${name}`;
+}</code></pre>
+            <div class="question">❓ Agar greet() ko bina value call karein to kya hoga?</div>
+            <button onclick="runDefault()">▶ Run</button>
+            <div id="out-default" class="output"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- DESTRUCT -->
+        <div id="destruct" class="box">
+            <h3>Destructuring</h3>
+<pre><code>let [a,b] = [10,20]; 
+let {city, age} = {city:"Karachi", age:21};</code></pre>
+            <div class="question">❓ Destructuring ka fayda kya hai?</div>
+            <button onclick="runDestruct()">▶ Run</button>
+            <div id="out-destruct" class="output"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- SPREAD REST -->
+        <div id="spread" class="box">
+            <h3>Spread & Rest</h3>
+<pre><code>let arr1 = [1,2,3]; 
+let arr2 = [...arr1,4,5]; 
+function sum(...nums){
+  return nums.reduce((a,b)=>a+b);
+}</code></pre>
+            <div class="question">❓ Spread operator ka use kaha hota hai?</div>
+            <button onclick="runSpread()">▶ Run</button>
+            <div id="out-spread" class="output"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- CLASS -->
+        <div id="class" class="box">
+            <h3>Class</h3>
+<pre><code>class Person { 
+  constructor(name,age){ 
+    this.name=name; 
+    this.age=age; 
+  } 
+  greet(){ 
+    return `Hi, I am ${this.name}`; 
+  } 
+}</code></pre>
+            <div class="question">❓ Class ka use kyu hota hai?</div>
+            <button onclick="runClass()">▶ Run</button>
+            <div id="out-class" class="output"></div>
+            <button class="back" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="social">
+            <a href="https://www.linkedin.com/in/hooria-fatima-54753927b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/HKMentor?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/hooria_codehub" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@pearlhovia" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
     </div>
 
-    <!-- INTRO -->
-    <div class="box" id="intro">
-      <h3>Introduction</h3>
-      <p><b>ES6 (ECMAScript 2015)</b> JavaScript ka updated version hai jisne coding ko <b>easy, powerful aur readable</b> banaya.</p>
-      <ul>
-        <li>let & const → better variables</li>
-        <li>Arrow Functions → short syntax</li>
-        <li>Template Literals → easy strings</li>
-        <li>Default Params → fallback values</li>
-        <li>Destructuring → easy value extraction</li>
-        <li>Spread/Rest → flexible arrays</li>
-        <li>Classes → OOP made simple</li>
-        <li>Modules → reusability</li>
-      </ul>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- LET CONST -->
-    <div class="box" id="letconst">
-      <h3>let & const</h3>
-      <pre>let name = "Hooria"; const pi = 3.14;</pre>
-      <div class="question">❓ Agar const variable ko dobara change karein to kya hoga?</div>
-      <button onclick="runLetConst()">▶ Run</button>
-      <div class="output" id="out-letconst"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- ARROW -->
-    <div class="box" id="arrow">
-      <h3>Arrow Function</h3>
-      <pre>const add = (a, b) => a + b;</pre>
-      <div class="question">❓ Arrow function ka benefit kya hai normal function k muqably?</div>
-      <button onclick="runArrow()">▶ Run</button>
-      <div class="output" id="out-arrow"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- TEMPLATE -->
-    <div id="template" class="box">
-      <h3>Template Literals</h3>
-      <pre>let name = "Hooria"; Hello, ${name}! Welcome to ES6</pre>
-      <div class="question">❓ Agar hum ${name} ki jagah quotes use karein to kya farq hoga?</div>
-      <button onclick="runTemplate()">▶ Run</button>
-      <div id="out-template" class="output"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- DEFAULT -->
-    <div id="default" class="box">
-      <h3>Default Parameters</h3>
-      <pre>function greet(name = "Guest"){ return `Hello ${name}`; }</pre>
-      <div class="question">❓ Agar greet() ko bina value call karein to kya hoga?</div>
-      <button onclick="runDefault()">▶ Run</button>
-      <div id="out-default" class="output"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- DESTRUCT -->
-    <div id="destruct" class="box">
-      <h3>Destructuring</h3>
-      <pre>let [a,b] = [10,20]; let {city, age} = {city:"Karachi", age:21};</pre>
-      <div class="question">❓ Destructuring ka fayda kya hai?</div>
-      <button onclick="runDestruct()">▶ Run</button>
-      <div id="out-destruct" class="output"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- SPREAD REST -->
-    <div id="spread" class="box">
-      <h3>Spread & Rest</h3>
-      <pre>let arr1=[1,2,3]; let arr2=[...arr1,4,5]; function sum(...nums){ return nums.reduce((a,b)=>a+b); }</pre>
-      <div class="question">❓ Spread operator ka use kaha hota hai?</div>
-      <button onclick="runSpread()">▶ Run</button>
-      <div id="out-spread" class="output"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- CLASS -->
-    <div id="class" class="box">
-      <h3>Class</h3>
-      <pre>class Person{ constructor(name,age){ this.name=name; this.age=age; } greet(){ return `Hi, I am ${this.name}`; } }</pre>
-      <div class="question">❓ Class ka use kyu hota hai?</div>
-      <button onclick="runClass()">▶ Run</button>
-      <div id="out-class" class="output"></div>
-      <button class="back" onclick="goBack()">⬅ Back</button>
-    </div>
-
-    <!-- Social Media Section -->
-    <div class="social">
-      <a href="https://www.linkedin.com/in/hooria-fatima-54753927b/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/HKMentor?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/hooria_codehub" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@pearlhovia" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-
-  <script>
-    function showBox(id){
-      document.getElementById("menu").style.display="none";
-      document.querySelectorAll(".box").forEach(b=>b.style.display="none");
-      document.getElementById(id).style.display="block";
-    }
-    function goBack(){
-      document.getElementById("menu").style.display="block";
-      document.querySelectorAll(".box").forEach(b=>b.style.display="none");
-    }
-
-    function runLetConst(){
-      let name="Hooria"; const pi=3.14;
-      document.getElementById("out-letconst").innerText=
-        `Output: name=${name}, pi=${pi}\n\nExplanation:\n- let block-scoped hota hai.\n- const ko reassign nahi kar sakte.`;
-    }
-    function runArrow(){
-      const add=(a,b)=>a+b;
-      document.getElementById("out-arrow").innerText=
-        `Output: add(2,3) = ${add(2,3)}\n\nExplanation:\n- Arrow functions short syntax dete hain.\n- 'this' ka behaviour lexical hota hai.`;
-    }
-    function runTemplate(){
-      let name="Hooria";
-      document.getElementById("out-template").innerText=
-        `Output: Hello, ${name}! Welcome to ES6.\n\nExplanation:\n- Backticks (\`) me \${} syntax se variables embed karte hain.`;
-    }
-    function runDefault(){
-      function greet(name="Guest"){ return `Hello ${name}`; }
-      document.getElementById("out-default").innerText=
-        `Output: ${greet()}\n\nExplanation:\n- Agar koi value pass na karein to default parameter use hota hai.`;
-    }
-    function runDestruct(){
-      let [a,b]=[10,20];
-      let {city,age}={city:"Karachi", age:21};
-      document.getElementById("out-destruct").innerText=
-        `Output: a=${a}, b=${b}, city=${city}, age=${age}\n\nExplanation:\n- Destructuring arrays/objects se values easily nikalne ka shortcut hai.`;
-    }
-    function runSpread(){
-      let arr1=[1,2,3]; let arr2=[...arr1,4,5];
-      function sum(...nums){ return nums.reduce((a,b)=>a+b); }
-      document.getElementById("out-spread").innerText=
-        `Output: arr2=[${arr2}], sum=${sum(1,2,3,4)}\n\nExplanation:\n- Spread (...) array expand karta hai.\n- Rest (...) function me multiple args ko collect karta hai.`;
-    }
-    function runClass(){
-      class Person{ constructor(name,age){this.name=name;this.age=age;} greet(){return `Hi, I am ${this.name}`;} }
-      let user=new Person("Hooria",21);
-      document.getElementById("out-class").innerText=
-        `Output: ${user.greet()}\n\nExplanation:\n- Classes se object templates bante hain.\n- Constructor initial values assign karta hai.`;
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
